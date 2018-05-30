@@ -1,0 +1,123 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Write your model definitions here
+ */
+
+namespace org.acme.titletransfer
+
+abstract participant Member {
+  o String name
+  o String emailAddress
+  o String address
+}
+
+participant Buyer identified by buyerID extends Member{
+    o String buyerID
+
+}
+participant Seller identified by sellerID extends Member{
+    o String sellerID
+}
+participant Notary identified by notaryID extends Member{
+    o String notaryID
+}
+
+
+asset SaleAgreement identified by saleAgreementID {
+    o String saleAgreementID
+    o String status
+    o String approved
+    o String completed
+    o String created
+    o String purchased
+    --> Buyer buyer
+    --> Seller seller
+    --> PropertyListing propertyListing
+}
+
+asset PropertyListing identified by propertyListingID {
+    o String propertyListingID
+    o String MLS
+    o String URL
+    o String sqMeters
+    o String address
+    o Integer amount
+    --> Seller seller
+
+}
+
+asset Deed identified by MLS {
+    o String MLS
+    o String URL
+    o String sqMeters
+    o String address
+    o Integer amount
+    --> Seller owner
+
+}
+  transaction CreateSaleAgreement {
+     o String saleAgreementID
+    --> PropertyListing propertyListing
+    --> Buyer buyer
+
+}
+
+  transaction ApproveSaleAgreement {
+   --> SaleAgreement saleAgreement
+}
+  transaction Buy {
+    --> SaleAgreement saleAgreement
+}
+
+transaction ApproveTransaction {
+    --> SaleAgreement saleAgreement
+}
+
+transaction createPropertyListing {
+      o String propertyListingID
+    o String MLS
+    o String URL
+    o String sqMeters
+    o String address
+    o Integer amount
+    --> Seller seller
+}
+
+abstract event BasicEvent {
+}
+
+
+event orderPlaced extends BasicEvent {
+  o String saleAgreementID
+}
+
+event agreementApproved extends BasicEvent {
+  o String saleAgreementID
+}
+
+event orderPurchased extends BasicEvent {
+  o String saleAgreementID
+}
+
+event transactionCompleted extends BasicEvent {
+  o String saleAgreementID
+}
+event notaryRequest extends BasicEvent {
+  o String saleAgreementID
+}
+event agreementCreated extends BasicEvent {
+  o String saleAgreementID
+}

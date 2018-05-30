@@ -1,0 +1,37 @@
+{
+  "engines": {
+    "composer": "^0.19.5"
+  },
+  "name": "titletransfer",
+  "version": "0.0.1",
+  "description": "transfer title",
+  "scripts": {
+    "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/titletransfer.bna",
+    "pretest": "npm run lint",
+    "lint": "eslint .",
+    "test": "nyc mocha -t 0 test/*.js && cucumber-js"
+  },
+  "keywords": [
+    "composer",
+    "composer-network"
+  ],
+  "author": "Subhashini Sundaresan",
+  "email": "subhashini.s@outlook.com",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "chai": "latest",
+    "chai-as-promised": "latest",
+    "composer-admin": "^0.19.5",
+    "composer-cli": "^0.19.5",
+    "composer-client": "^0.19.5",
+    "composer-common": "^0.19.5",
+    "composer-connector-embedded": "^0.19.5",
+    "composer-cucumber-steps": "^0.19.5",
+    "cucumber": "^2.2.0",
+    "eslint": "latest",
+    "ieee754": "^1.1.11",
+    "mkdirp": "latest",
+    "mocha": "latest",
+    "nyc": "latest"
+  }
+}

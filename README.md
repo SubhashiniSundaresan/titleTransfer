@@ -25,10 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-composer-rest-server -c admin@titletransfer -p 3001
-
-composer archive create -t dir -n .
-composer network install --card PeerAdmin@hlfv1 --archiveFile titletransfer@0.0.1.bna
-composer network start --networkName titletransfer --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
-composer card import --file networkadmin.card
-composer network ping --card admin@titletransfer
+<p>&nbsp;</p>
+<p>composer-rest-server -c admin@titletransfer -p 3001</p>
+<p>composer archive create -t dir -n .</p>
+<p>composer network install --card PeerAdmin@hlfv1 --archiveFile titletransfer@0.0.1.bna</p>
+<p>composer network start --networkName titletransfer --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card</p>
+<p><br />composer card import --file networkadmin.card</p>
+<p><br />composer network ping --card admin@titletransfer</p>
